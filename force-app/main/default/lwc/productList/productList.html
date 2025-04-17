@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Products from DummyJSON">
+        <lightning-button label="Fetch Latest Products" onclick={handleFetch} class="slds-m-bottom_medium"></lightning-button>
+        <template if:true={products}>
+            <template for:each={products} for:item="product">
+                <div key={product.Id} class="slds-box slds-m-bottom_small">
+                    <h3>{product.Title__c}</h3>
+                    <img src={product.ThumbnailUrl__c} width="100"/>
+                    <p>{product.Description__c}</p>
+                    <p>Price: ${product.Price__c}</p>
+                </div>
+            </template>
+        </template>
+        <template if:true={error}>
+            <p class="slds-text-color_error">{error}</p>
+        </template>
+    </lightning-card>
+</template>
