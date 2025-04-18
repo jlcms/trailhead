@@ -4,12 +4,14 @@ import fetchAndStoreProducts from '@salesforce/apex/ProductService.fetchAndStore
 
 export default class ProductList extends LightningElement {
     @track products;
+    @track counting;
     @track error;
 
     @wire(getStoredProducts)
     wiredProducts({ error, data }) {
         if (data) {
             this.products = data;
+            this.counting = data.length;
             this.error = undefined;
         } else if (error) {
             this.error = error.body.message;

@@ -1,5 +1,5 @@
 <template>
-    <lightning-card title="Products from DummyJSON">
+    <lightning-card title="List of Products">
         <lightning-button label="Fetch Latest Products" onclick={handleFetch} class="slds-m-bottom_medium"></lightning-button>
         <template if:true={products}>
             <template for:each={products} for:item="product">
@@ -10,6 +10,7 @@
                     <p>Price: ${product.Price__c}</p>
                 </div>
             </template>
+            <h4>Product Counts: {counting} </h4>
         </template>
         <template if:true={error}>
             <p class="slds-text-color_error">{error}</p>
