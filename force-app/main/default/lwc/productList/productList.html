@@ -1,19 +1,24 @@
 <template>
     <lightning-card title="List of Products">
-        <lightning-button label="Fetch Latest Products" onclick={handleFetch} class="slds-m-bottom_medium"></lightning-button>
-        <template if:true={products}>
-            <template for:each={products} for:item="product">
-                <div key={product.Id} class="slds-box slds-m-bottom_small">
-                    <h3>{product.Title__c}</h3>
-                    <img src={product.ThumbnailUrl__c} width="100"/>
-                    <p>{product.Description__c}</p>
-                    <p>Price: ${product.Price__c}</p>
-                </div>
-            </template>
-            <h4>Product Counts: {counting} </h4>
-        </template>
-        <template if:true={error}>
-            <p class="slds-text-color_error">{error}</p>
-        </template>
+        <div class="slds-box slds-p-around_none slds-m-top_x-small slds-m-bottom_small slds-m-horizontal_none" style="background-color:#f3ecec;">
+            <lightning-layout>
+                <lightning-layout-item padding="around-small">
+                    <template if:true={products}>
+                        <template for:each={products} for:item="product">
+                            <div key={product.Id} class="custom-box slds-box slds-p-around_small slds-text-align_left" style="background-color:white; width:48%;float: left;margin: 1%;">
+                                <h3>{product.Title__c}</h3>
+                                <img src={product.ThumbnailUrl__c} width="100"/>
+                                <p>{product.Description__c}</p>
+                                <p>Price: ${product.Price__c}</p>
+                            </div>
+                        </template>
+                        <div style="width: 100%;float:left;">Product Counts: {counting} </div>
+                    </template>
+                    <template if:true={error}>
+                        <p class="slds-text-color_error">{error}</p>
+                    </template>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
     </lightning-card>
 </template>
