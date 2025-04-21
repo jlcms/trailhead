@@ -16,3 +16,8 @@ The `sfdx-project.json` file contains useful configuration information for your 
 - [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
 - [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
 - [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+
+
+For testing the ProjectList project you should:
+- add both the CDN and DummyJSON URLs to the trusted URLs in Salesforce setup;
+- open the 'Sales' app on Salesforce, pick from the right top side gear icon and select 'Edit Page', then add the ProducList custom component to the page. Save it and activate it.
