@@ -1,19 +1,43 @@
 <template>
-    <lightning-card title="List of Products">
-        <lightning-button label="Fetch Latest Products" onclick={handleFetch} class="slds-m-bottom_medium"></lightning-button>
-        <template if:true={products}>
-            <template for:each={products} for:item="product">
-                <div key={product.Id} class="slds-box slds-m-bottom_small">
-                    <h3>{product.Title__c}</h3>
-                    <img src={product.ThumbnailUrl__c} width="100"/>
-                    <p>{product.Description__c}</p>
-                    <p>Price: ${product.Price__c}</p>
-                </div>
+    <lightning-card title="List of Products" style="width: 100%;">
+        <div style="width: 100%; float: left; background-color: #f4f6f9; padding: 10px;">
+            <div class="slds-m-bottom_small" style="width: 45%; float: left;">
+                <lightning-combobox
+                    name="Category"
+                    value={categories}
+                    placeholder="Select Category"
+                    options={categories}
+                    onchange={handleCategoryChange} >
+                </lightning-combobox>
+            
+            </div>
+            <div class="slds-m-bottom_small" style="width: 45%; float: left; margin-left: 10px;">
+                <lightning-combobox
+                    name="Brand"
+                    value={brands}
+                    placeholder="Select Brand"
+                    options={brands}
+                    onchange={handleBrandChange} >
+                </lightning-combobox>
+            </div>
+        </div>
+        <div style="width: 100%; float: left; background-color: #f4f6f9; padding: 10px;">
+            <template if:true={products}>
+                <template for:each={products} for:item="product">
+                    <div key={product.Id} class="slds-box slds-m-bottom_small" style="width: 100%; float: left;">
+                        <h3><b>{product.Title__c}</b> - {product.brand__c}</h3>
+                        <p>{product.category__c}</p>
+                        <img src={product.ThumbnailUrl__c} width="100" />
+                        <p>{product.Description__c}</p>
+                        <p>Price: ${product.Price__c}</p>
+                        <p>Stock: {product.stock__c}</p>
+                    </div>
+                </template>
+                <h4>Product Counts: {counting}</h4>
             </template>
-            <h4>Product Counts: {counting} </h4>
-        </template>
-        <template if:true={error}>
-            <p class="slds-text-color_error">{error}</p>
-        </template>
+            <template if:true={error}>
+                <p class="slds-text-color_error">{error}</p>
+            </template>
+        </div>
     </lightning-card>
 </template>
